@@ -21,7 +21,7 @@ class CommandBoard(Board):
         super().__init__(board_type)
         self.position = 0
         
-    def start_game(self):
+    def start_single_player_game(self):
         self.draw_board()
         while not self.winner:
             key_press = keyboard.read_event(suppress=False)
@@ -33,12 +33,6 @@ class CommandBoard(Board):
             key_press = keyboard.read_event(suppress=False)
             self.key_press_callback(key_press)
     
-    def start_socket_multiplayer_game(self):
-        self.draw_board()
-        while not self.winner:
-            key_press = keyboard.read_event(suppress=False)
-            self.key_press_callback(key_press)
-
     def set_symbol(self):
         board_status = super().set_symbol(self.position)
         return board_status
@@ -89,13 +83,8 @@ class CommandBoard(Board):
         first_row = aux_board[:3]
         second_row = aux_board[3:6]
         third_row = aux_board[6:]
-        print('')
-        print('|'.join
-        (first_row))
-        print('-----')
-        print('|'.join(second_row))
-        print('-----')
-        print('|'.join(third_row))
+        line_divider = '\n-----\n'
+        print('|'.join(first_row)+ line_divider+'|'.join(second_row)+ line_divider +'|'.join(third_row))
         if self.winner:
             if self.winner == 'Draw':
                 print('Its a Draw')

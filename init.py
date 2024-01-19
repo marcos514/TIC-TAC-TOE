@@ -17,9 +17,7 @@ def clear():
 
 def single_player_start():
     commandBoard = CommandBoard('Start')
-    commandBoard.start_game()
-    while not commandBoard.winner:
-        continue
+    commandBoard.start_single_player_game()
     return '\n\n\n\n\n\n WINEEEERRRRR: '+ commandBoard.winner
     
 
@@ -63,22 +61,3 @@ Select option
                 position =  0
             elif position < 0:
                 position =  board_length - 1
-
-
-
-
-# import pickle
-# from classes.command_board import CommandBoard
-# x = datetime.datetime.now()
-# x.timestamp() .pkl
-# with open('command_board.pkl', 'wb') as outp:
-#     board = CommandBoard('simple')
-#     pickle.dump(board, outp, pickle.HIGHEST_PROTOCOL)
-
-
-# del board
-
-# with open('command_board.pkl', 'rb') as inp:
-#     company1 = pickle.load(inp)
-#     print(company1.draw_board())  # -> banana
-#     print(company1.board_type)  # -> 40
